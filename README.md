@@ -22,3 +22,17 @@ We would also appreciate the use of any state management and UI libraries.
 
 REST API doc: <https://docs.github.com/en/rest>
 Graphql API doc: <https://api.github.com/graphql>
+
+TODO list:
+
+- [x] Fetch users list
+- [ ] Search by phrase
+- [ ] Pagination
+- [ ] Infinite scroll
+- [ ] Fetch & display user's data
+- [ ] Add route for user's details page
+- [ ] Update Readme
+- [ ] [Optional] Use Redux for store management
+- [ ] [Optional] Resolve @TODOs
+- [ ] [Optional] Add tests
+- [ ] [Optional] Add some nice css styling
