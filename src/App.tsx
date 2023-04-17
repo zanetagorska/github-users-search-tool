@@ -1,11 +1,14 @@
+import { useFetchUsers } from "./useFetchUsers"
+
 function App() {
+
+  const { users } = useFetchUsers()
 
   return (
     <div className="App">
       <input type="text" placeholder='Enter user name' />
-      <div>Placeholder for data</div>
-      <div>Loading...</div>
-      <div>Error</div>
+      {users.map(user => <div key={user.id}>{user.login}</div>)}
+      {/* TODO: handle error and loading */}
     </div>
   )
 }
