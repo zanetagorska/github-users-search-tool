@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, ReactNode } from "react"
 import { useFetchUsers } from "./useFetchUsers"
 
-function App() {
+function SearchPage() {
   // @TODO: combine query and page for params
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
@@ -48,4 +48,4 @@ function App() {
   )
 }
 
-export default App
+export default SearchPage
