@@ -7,20 +7,24 @@ type User = {
   login: string
 }
 
-type Users = User[]
+type UsersResponse = {
+  items: User[],
+}
 
 export const useFetchUsers = () => {
-  const [users, setUsers] = useState<Users>([])
+  const [users, setUsers] = useState<User[]>([])
 
   useEffect(() => {
     // @TODO: Cover API error
     const fetchUsers = async () => {
-      const res = await axios.get<Users>("https://api.github.com/users", {  
+      const res = await axios.get<UsersResponse>("https://api.github.com/search/users", {  
         params: {
-          since: 100,
+          page: 8,
+          q: "Tom"
+
         }
       })
-      setUsers(res.data)
+      setUsers(res.data.items)
     }
     
     fetchUsers()
