@@ -1,15 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
-// @TODO: move types for separate file
-type User = {
-  id: number,
-  login: string
-}
-
-type UsersResponse = {
-  items: User[],
-}
+import { User, UsersResponse } from "./types"
 
 export const useFetchUsers = (query: string, page: number) => {
 
