@@ -28,8 +28,8 @@ TODO list:
 - [x] Fetch users list
 - [x] Search by phrase
 - [x] Pagination & Infinite scroll
-- [ ] Fetch & display user's data
-- [ ] Add route for user's details page
+- [x] Add route for user's details page
+- [x] Fetch & display user's data
 - [ ] Update Readme
 - [ ] [Optional] Use Redux for store management
 - [ ] [Optional] Resolve @TODOs

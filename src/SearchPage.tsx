@@ -1,5 +1,6 @@
 import { useRef, useState, useCallback, ReactNode } from "react"
 import { useFetchUsers } from "./useFetchUsers"
+import { Link } from "react-router-dom"
 
 function SearchPage() {
   // @TODO: combine query and page for params
@@ -40,8 +41,13 @@ function SearchPage() {
     <div className="App">
       <input type="text" placeholder='Type in user name' onChange={search} />
       {users.map((user, index) => (index === users.length - 1)
-        ? <div ref={lastUser} key={user.id}>{user.login}</div>
-        : <div key={user.id}>{user.login}</div>)
+      // @TODO: DRY
+        ? <div ref={lastUser} key={user.id}>
+            <Link to={`user/${user.id}`}>{user.login}</Link>
+          </div>
+        : <div key={user.id}>
+            <Link to={`user/${user.id}`}>{user.login}</Link>
+          </div>)
       }
       {/* @TODO: handle error and loading */}
     </div>
