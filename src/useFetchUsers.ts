@@ -26,7 +26,7 @@ export const useFetchUsers = (query: string, page: number) => {
       const res = await axios.get<UsersResponse>("https://api.github.com/search/users", {  
         params,
       })
-      setUsers(res.data.items)
+      setUsers(prevUsers => [...prevUsers, ...res.data.items])
     }
 
     if(query) {

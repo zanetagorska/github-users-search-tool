@@ -27,8 +27,7 @@ TODO list:
 
 - [x] Fetch users list
 - [x] Search by phrase
-- [ ] Pagination
-- [ ] Infinite scroll
+- [x] Pagination & Infinite scroll
 - [ ] Fetch & display user's data
 - [ ] Add route for user's details page
 - [ ] Update Readme
