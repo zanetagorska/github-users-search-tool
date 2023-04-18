@@ -11,24 +11,29 @@ type UsersResponse = {
   items: User[],
 }
 
-export const useFetchUsers = () => {
+export const useFetchUsers = (query: string, page: number) => {
+
   const [users, setUsers] = useState<User[]>([])
+
+  const params = {
+    q: query,
+    page
+  }
 
   useEffect(() => {
     // @TODO: Cover API error
     const fetchUsers = async () => {
       const res = await axios.get<UsersResponse>("https://api.github.com/search/users", {  
-        params: {
-          page: 8,
-          q: "Tom"
-
-        }
+        params,
       })
       setUsers(res.data.items)
     }
+
+    if(query) {
+      fetchUsers()
+    }
     
-    fetchUsers()
-  }, []) 
+  }, [query, page]) 
   
   return { users }
 }

@@ -26,7 +26,7 @@ Graphql API doc: <https://api.github.com/graphql>
 TODO list:
 
 - [x] Fetch users list
-- [ ] Search by phrase
+- [x] Search by phrase
 - [ ] Pagination
 - [ ] Infinite scroll
 - [ ] Fetch & display user's data
