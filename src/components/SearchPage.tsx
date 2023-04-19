@@ -1,9 +1,11 @@
-import { useRef, useState, useCallback, useEffect } from "react"
+import { FC, useRef, useState, useCallback, useEffect } from "react"
 import { useFetchUsers } from "../hooks/useFetchUsers"
 import useDebounce from "../hooks/useDebounce"
 import { Link } from "react-router-dom"
+import { Loader } from "./Loader"
+import { AlertBanner } from "./AlertBanner"
 
-function SearchPage() {
+export const SearchPage: FC = (): JSX.Element => {
   // @TODO: combine query and page for params
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
@@ -45,23 +47,25 @@ function SearchPage() {
   const noMoreResults = fetchingState.type === 'READY' && !!users.length && fetchingState.lastPage
 
   return (
-    <div className="App">
-      <input type="text" placeholder='Type in user name' onChange={search} />
-      {users.map((user, index) => (index === users.length - 1)
-      // @TODO: DRY
-        ? <div ref={lastUser} key={user.id}>
-            <Link to={`user/${user.id}`}>{user.login}</Link>
-          </div>
-        : <div key={user.id}>
-            <Link to={`user/${user.id}`}>{user.login}</Link>
-          </div>)
-      }
-      {fetchingState.type === 'LOADING' && <div>loading</div>}
-      {fetchingState.type === 'ERROR' && <div>{fetchingState.message}</div>}
-      {noResults && <div>No results try different user name</div>}
-      {noMoreResults && <div>No more results</div>}
+    <div className="mx-auto px-8 py-8 py-8">
+      <div className="px-2 py-2">
+        <input type="text" placeholder='Type in user name' onChange={search} className="rounded-md border-0 py-2 px-2 text-gray-900 ring-1"/>
+      </div>
+      <div className="px-2 py-2">
+        {users.map((user, index) => (index === users.length - 1)
+        // @TODO: DRY
+          ? <div ref={lastUser} key={user.id} className="font-medium text-blue-600 dark:text-blue-500 py-2">
+              <Link to={`user/${user.id}`}>{user.login}</Link>
+            </div>
+          : <div key={user.id} className="font-medium text-blue-600 dark:text-blue-500 hover:underline py-2">
+              <Link to={`user/${user.id}`}>{user.login}</Link>
+            </div>)
+        }
+        {fetchingState.type === 'LOADING' && <Loader />}
+        {fetchingState.type === 'ERROR' && <AlertBanner message={fetchingState.message} type='error'/>}
+        {noResults && <AlertBanner message="No results try different user name" type='info'/>}
+        {noMoreResults && <AlertBanner message="No more results" type='info'/>}
+      </div>
     </div>
   )
 }
-
-export default SearchPage
