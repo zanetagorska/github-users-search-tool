@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { User, UsersResponse } from "./types"
+import { User, UsersResponse } from "../types"
 
 export const useFetchUsers = (query: string, page: number) => {
 

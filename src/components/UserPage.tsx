@@ -1,6 +1,5 @@
-import React from 'react'
 import { useParams } from 'react-router-dom';
-import { useFetchUserDetails } from './useFetchUserDetails';
+import { useFetchUserDetails } from '../hooks/useFetchUserDetails';
 
 function UserPage() {
   const { id } = useParams();

@@ -1,5 +1,5 @@
-import { useRef, useState, useCallback, ReactNode } from "react"
-import { useFetchUsers } from "./useFetchUsers"
+import { useRef, useState, useCallback } from "react"
+import { useFetchUsers } from "../hooks/useFetchUsers"
 import { Link } from "react-router-dom"
 
 function SearchPage() {

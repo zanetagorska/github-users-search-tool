@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { UserDetails } from "./types"
+import { UserDetails } from "../types"
 
 export const useFetchUserDetails = (id?: string) => {
 
