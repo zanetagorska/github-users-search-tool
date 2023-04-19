@@ -18,3 +18,9 @@ export interface UserDetails extends User {
 export interface UsersResponse {
   items: User[],
 }
+
+type READY = { type: 'READY' }
+type ERROR = { type: 'ERROR', message: string }
+type LOADING = { type: 'LOADING' }
+
+export type FetchingState = LOADING | ERROR | READY

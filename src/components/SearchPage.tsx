@@ -10,9 +10,8 @@ function SearchPage() {
 
   const debouncedQuery = useDebounce(query, 1000)
 
-  const { users } = useFetchUsers(debouncedQuery, page)
+  const { users, fetchingState } = useFetchUsers(debouncedQuery, page)
 
-  // @TODO: debounce to reduce unnecessary calls
   const search = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value)
   }
@@ -55,7 +54,8 @@ function SearchPage() {
             <Link to={`user/${user.id}`}>{user.login}</Link>
           </div>)
       }
-      {/* @TODO: handle error and loading */}
+      {fetchingState.type === 'LOADING' && <div>loading</div>}
+      {fetchingState.type === 'ERROR' && <div>{fetchingState.message}</div>}
     </div>
   )
 }
