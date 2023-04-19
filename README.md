@@ -1,5 +1,29 @@
 # Github Users Search Tool
 
+## Project setup
+
+```
+npm i
+```
+
+### Start Vite dev server
+
+```
+npm run dev
+```
+
+### Build for production
+
+```
+npm run build
+```
+
+### Locally preview production build
+
+```
+npm run preview
+```
+
 ## Requirements
 
 You need to create a github users search tool.
@@ -23,15 +47,15 @@ We would also appreciate the use of any state management and UI libraries.
 REST API doc: <https://docs.github.com/en/rest>
 Graphql API doc: <https://api.github.com/graphql>
 
-TODO list:
+### TODO list
 
 - [x] Fetch users list
 - [x] Search by phrase
 - [x] Pagination & Infinite scroll
 - [x] Add route for user's details page
 - [x] Fetch & display user's data
-- [ ] Update Readme
-- [ ] [Optional] Use Redux for store management
+- [x] Update Readme
 - [ ] [Optional] Resolve @TODOs
+- [ ] [Optional] Use Redux for store management
 - [ ] [Optional] Add tests
 - [ ] [Optional] Add some nice css styling
