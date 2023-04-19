@@ -59,3 +59,4 @@ Graphql API doc: <https://api.github.com/graphql>
 - [ ] [Optional] Use Redux for store management
 - [ ] [Optional] Add tests
 - [ ] [Optional] Add some nice css styling
+- [ ] [Optional] Add Vite import alias

@@ -1,5 +1,6 @@
-import { useRef, useState, useCallback } from "react"
+import { useRef, useState, useCallback, useEffect } from "react"
 import { useFetchUsers } from "../hooks/useFetchUsers"
+import useDebounce from "../hooks/useDebounce"
 import { Link } from "react-router-dom"
 
 function SearchPage() {
@@ -7,13 +8,18 @@ function SearchPage() {
   const [query, setQuery] = useState('')
   const [page, setPage] = useState(1)
 
-  const { users } = useFetchUsers(query, page)
+  const debouncedQuery = useDebounce(query, 1000)
+
+  const { users } = useFetchUsers(debouncedQuery, page)
 
   // @TODO: debounce to reduce unnecessary calls
   const search = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value)
-    setPage(1)
   }
+
+  useEffect(() => {
+    setPage(1)
+  }, [debouncedQuery])
 
   // @TODO: extract to separate file
   const observer = useRef<IntersectionObserver | null>(null)
