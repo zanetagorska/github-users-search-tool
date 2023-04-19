@@ -55,10 +55,9 @@ Graphql API doc: <https://api.github.com/graphql>
 - [x] Add route for user's details page
 - [x] Fetch & display user's data
 - [x] Update Readme
+- [x] [Optional] Add some nice css styling
 - [ ] [Optional] Resolve @TODOs
 - [ ] [Optional] Use Redux for store management
 - [ ] [Optional] Add tests
-- [ ] [Optional] Add some nice css styling
 - [ ] [Optional] Add Vite import alias
-- [ ] Try build, try linter
-
+- [ ] [Optional] Add linter + prettier

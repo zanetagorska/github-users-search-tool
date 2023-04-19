@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { SearchPage } from './components/SearchPage'
-import UserPage from './components/UserPage'
+import { UserPage } from './components/UserPage'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './assets/base.css'
 
