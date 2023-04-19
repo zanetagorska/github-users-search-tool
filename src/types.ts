@@ -15,12 +15,15 @@ export interface UserDetails extends User {
   blog: Nullable<string>
 }
 
-export interface UsersResponse {
+export interface UsersData {
   items: User[],
+  total_count: number,
 }
 
-type READY = { type: 'READY' }
+type IDLE = { type: 'IDLE' }
+type READY = { type: 'READY', lastPage?: boolean }
 type ERROR = { type: 'ERROR', message: string }
 type LOADING = { type: 'LOADING' }
 
-export type FetchingState = LOADING | ERROR | READY
+// @TODO: Differentiate between list and object states
+export type FetchingState = IDLE | LOADING | ERROR | READY

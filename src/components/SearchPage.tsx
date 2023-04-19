@@ -23,16 +23,15 @@ function SearchPage() {
   // @TODO: extract to separate file
   const observer = useRef<IntersectionObserver | null>(null)
   const lastUser = useCallback((user: HTMLDivElement) => {
-    // @TODO: replace by loading
-    // @TODO: handle case when there is no more results
-    if(!users) {
+
+    if(fetchingState.type !== "READY") {
       return;
     }
     if(observer.current) {
       observer.current.disconnect()
     }
     observer.current = new IntersectionObserver(users => {
-      if(users[0].isIntersecting) {
+      if(users[0].isIntersecting && !fetchingState.lastPage) {
         setPage(prev => prev + 1)
       }
     })
@@ -40,7 +39,10 @@ function SearchPage() {
     if(user) {
       observer.current.observe(user)
     }
-  }, [])  
+  }, [fetchingState])
+
+  const noResults = fetchingState.type === 'READY' && !users.length
+  const noMoreResults = fetchingState.type === 'READY' && !!users.length && fetchingState.lastPage
 
   return (
     <div className="App">
@@ -56,6 +58,8 @@ function SearchPage() {
       }
       {fetchingState.type === 'LOADING' && <div>loading</div>}
       {fetchingState.type === 'ERROR' && <div>{fetchingState.message}</div>}
+      {noResults && <div>No results try different user name</div>}
+      {noMoreResults && <div>No more results</div>}
     </div>
   )
 }
